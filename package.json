@@ -1,0 +1,12 @@
+{
+  "name": "dcscaptions",
+  "version": "1.0.0",
+  "description": "Creates live captions from audio input.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Barry Duggan",
+  "license": "ISC"
+}

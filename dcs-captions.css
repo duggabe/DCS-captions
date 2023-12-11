@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/* DCS-captions */
+/* This CSS is for full-sized desk-top and laptop screens */
+
+/* HTML tags */
+
+body {
+font-family: Verdana, Arial, sans-serif;
+font-size: 12pt;
+padding:0px;
+width: 960px;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 30px;
+background-color: rgb(255,255,192);
+}
+
+h2,h3,h4,h5,h6,p,li {
+color: rgb(0,51,102);
+margin-left: 15px;
+}
+
+h1 {
+color: rgb(0,51,102);
+font-family: Trebuchet, Verdana, Arial, sans-serif;
+font-size: 36pt;
+font-weight: bold;
+text-align: center;
+margin: 10px 0px 0px 0px;
+padding: 0px;
+}
+
+textarea {
+   font-size: 12pt;
+   font-family: Arial;
+   font-weight: bold;
+   color: white;
+   background: black;
+} 
+
+

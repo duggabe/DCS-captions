@@ -1,0 +1,62 @@
+/* node.js server */
+/* DCS-captions */
+
+"use strict"
+
+var http = require("http");
+var url = require("url");
+var exec = require("child_process").exec;
+var fs = require('fs')
+var _ops = fs.readFileSync ("opSys.txt", "utf8");
+var opSys = _ops.substr(0,5);       /*  Win64, MacOS, or Linux (first 5 characters) */
+
+function start (route, handle)
+    {
+    function onRequest (request, response)
+        {
+        var postData = "";
+        var pathname = url.parse(request.url).pathname;
+//        console.log ("Request for " + pathname + " received.");
+        request.setEncoding("utf8");
+        request.addListener("data", function(postDataChunk)
+            {
+            postData += postDataChunk;
+//            console.log("Received post data chunk.");
+            });
+        request.addListener("end", function()
+            {
+            if (postData != "")
+                {
+//                console.log ("end of post data.");
+                route(handle, pathname, response, postData);
+                }
+            else
+                {
+//                console.log ("end of request.");
+                route (handle, pathname, response, request);
+                }
+            });
+        }
+    var port = 50200;
+    http.createServer(onRequest).listen(port);
+    console.log ("DCS-captions has started. Listening on port: " + port);
+//  start browser
+    var command;
+    if (opSys == "Win64")
+        command = ("start http://localhost:50200/init");             // Win64
+    else if (opSys == "MacOS")
+        command = ("open http://localhost:50200/init");            // MacOS
+    else
+        command = ("xdg-open http://localhost:50200/init");     // Linux
+    // console.log (command);
+    exec (command, function (error, stdout, stderr) 
+        {
+        if (error)
+            {
+            console.log ("command: ", command);
+            console.log ("error: ", stderr);
+            }
+        });
+    }
+    
+exports.start = start;
