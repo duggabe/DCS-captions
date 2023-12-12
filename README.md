@@ -55,8 +55,8 @@ copy opSys_Win.txt opSys.txt
 * You will get the following messages on your terminal:
     - "opSys is Linux" (your appropriate OS)
     - "DCS-captions has started. Listening on port: 50200"
-* A web page (or tab) will open in your default browser.
-* Click on "Start captions"
+* A web page (or tab) will open in your default browser. Make sure it is Google Chrome or open Chrome and go to URL `http://localhost:50200/DCS-captions.html`.
+* Click on "Start captioning"
 * Your system will ask for access to your microphone.
 * To terminate the program, enter Control-C and also close the browser tab.
 
